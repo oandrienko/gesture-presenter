@@ -11,24 +11,20 @@
   },
   "default_locale": "en",
   "background": {
-    "scripts": ["src/bg/background.js"]
+    "scripts": ["js/jquery/jquery.js", "src/bg/background.js"]
   },
 
-  // "content_scripts": [
-  //  {
-  //    "matches": ["https://docs.google.com/*"],
-  //    "js": ["content_script.js"],
-  //    "run_at": "document_end"
-  //  }
-  // ],
-
-    // "content_scripts":[
-    //   "http://*/*","https://*/*"
-    // ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["js/jquery/jquery.js"]
+    }
+  ],
 
   "permissions": [
-    "activeTab",
-    "http://*/*",
-    "https://*/*"
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "activeTab"
   ]
 }

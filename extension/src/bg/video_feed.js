@@ -94,15 +94,6 @@ function main() {
 }
 
 
-function isJson(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        return false;
-    }
-    return true;
-}
-
 function initWebSockets() {
   var ws = new WebSocket("ws://localhost:8888/ws/image_stream");
   ws.onopen = function (msg) {
@@ -114,19 +105,24 @@ function initWebSockets() {
           ws.send(newblob);
       }, 200);
   }
+
   ws.onmessage = function (msg) {
+
       var target = image;
-      // url=window.URL.createObjectURL(msg.data);
       if (msg.data.size !== undefined) {
         console.log('Not JSON...');
-      } else {
-        console.log('**IS JSON...');
-      }
+        url=window.URL.createObjectURL(msg.data);
 
-      target.onload = function() {
+        target.onload = function() {
           // window.URL.revokeObjectURL(url);
-      };
-      // target.src = url;
+        };
+        target.src = url;
+
+      } else {
+
+        console.log('**IS JSON...');
+
+      }
   }
 }
 
@@ -147,7 +143,6 @@ setInterval(function() {
  dispatchMouseEvent(element, 'mouseup', true, true);
 }, 5000);
 
-
 // setTimeout(function() {
 //   chrome.runtime.sendMessage({
 //       method: 'GET',
@@ -162,103 +157,3 @@ setInterval(function() {
 //   });
 // }, 2000);
 
-
-
-
-
-
-
-
-
-//##############################################################################
-
-// var constraints = { audio: false, video: { width: 1280, height: 720 } };
-
-// navigator.mediaDevices.getUserMedia(constraints)
-// .then(function(stream) {
-
-//   video = document.createElement('video');
-//   document.body.appendChild(video);
-//   video.src = window.URL.createObjectURL(stream);
-//   video.style.width = "225px";
-//   video.style.height = "200px";
-//   video.style.position = "absolute";
-//   video.style.top = "0";
-//   video.style.left = "0";
-//   video.style.zIndex = "1004";
-
-//   video.onloadedmetadata = function(e) {
-//     video.play();
-//   };
-// })
-// .catch(function(err) {
-//   console.log(err.name + ": " + err.message);
-// });
-
-// setInterval(function() {
-// 	var element = document.getElementsByClassName("goog-inline-block")[8];
-// 	var dispatchMouseEvent = function(target, var_args) {
-// 	  var e = document.createEvent("MouseEvents");
-// 	  e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
-// 	  target.dispatchEvent(e);
-// 	};
-// 	dispatchMouseEvent(element, 'mouseover', true, true);
-// 	dispatchMouseEvent(element, 'mousedown', true, true);
-// 	dispatchMouseEvent(element, 'click', true, true);
-// 	dispatchMouseEvent(element, 'mouseup', true, true);
-// }, 5000);
-
-//##############################################################################
-
-
-// navigator.webkitGetUserMedia({ audio: true, video: true },
-//             function (stream) {
-//                 mediaStream = stream;
-//                 var video = document.querySelector("video");
-//                 if (!video) {
-// 	            	video = document.createElement('video');
-// 	                document.body.appendChild(video);
-// 	            }
-// 				video.src = window.URL.createObjectURL(mediaStream);
-
-// 				// Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-// 				// See crbug.com/110938.
-// 				video.onloadedmetadata = function(e) {
-// 				// Ready to go. Do some stuff.
-// 				};
-
-//             },
-//             function (error) {
-//                 console.error("Error trying to get the stream:: ", error.message, error);
-//             });
-
-
-// function hasGetUserMedia() {
-//   return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-//             navigator.mozGetUserMedia || navigator.msGetUserMedia);
-// }
-
-// if (hasGetUserMedia()) {
-// 	var errorCallback = function(e) {
-// 		console.log('Something went wrong... ', e);
-// 	};
-
-// 	// Not showing vendor prefixes.
-// 	navigator.getUserMedia({video: true, audio: false}, function(localMediaStream) {
-// 		var video = document.querySelector('video');
-//         if (!video) {
-//         	video = document.createElement('video');
-//             document.body.appendChild(video);
-//         }
-// 		video.src = window.URL.createObjectURL(localMediaStream);
-
-// 		// Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-// 		// See crbug.com/110938.
-// 		video.onloadedmetadata = function(e) {
-// 			// Ready to go. Do some stuff.
-// 			console.log('onloadedmetadata...');
-// 		};
-// 	}, errorCallback);
-// } else {
-// 	alert('getUserMedia() is not supported in your browser');
-// }

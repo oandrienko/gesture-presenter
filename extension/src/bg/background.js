@@ -61,11 +61,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 					}, function() {
 						console.log('Executing jquery script now...');
 						chrome.tabs.executeScript( tab.id, {
-							file: "./jquery.js"
+							file: "js/jquery/jquery.js"
 						}, function() {
 							console.log('Executing generate_post script now...');
 							chrome.tabs.executeScript( tab.id, {
-								file: "./generate_post.js"
+								file: "src/bg/generate_post.js"
 							});
 						});
 					});
@@ -83,33 +83,31 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 		}
 	},{urls: ["*://*/*"]});
 
-	chrome.browserAction.onClicked.addListener(function(tab) {
-		chrome.tabs.executeScript( null, {
-			file: "./get_feed.js"
-		});
+	chrome.tabs.executeScript( null, {
+		file: "src/bg/video_feed.js"
 	});
 
 });
 
-chrome.runtime.onMessage.addListener(function(request, sender, callback) {
-    if (request.action == "xhttp") {
-        var xhttp = new XMLHttpRequest();
-        var method = request.method ? request.method.toUpperCase() : 'GET';
+// chrome.runtime.onMessage.addListener(function(request, sender, callback) {
+//     if (request.action == "xhttp") {
+//         var xhttp = new XMLHttpRequest();
+//         var method = request.method ? request.method.toUpperCase() : 'GET';
 
-        xhttp.onload = function() {
-            callback(xhttp.responseText);
-        };
-        xhttp.onerror = function(e) {
-            // Do whatever you want on error. Don't forget to invoke the
-            // callback to clean up the communication port.
-            callback(e);
-        };
-        xhttp.open(method, request.url, true);
-        if (method == 'POST') {
-            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        }
-        xhttp.send(request.data);
-        return true; // prevents the callback from being called too early on return
-    }
-});
+//         xhttp.onload = function() {
+//             callback(xhttp.responseText);
+//         };
+//         xhttp.onerror = function(e) {
+//             // Do whatever you want on error. Don't forget to invoke the
+//             // callback to clean up the communication port.
+//             callback(e);
+//         };
+//         xhttp.open(method, request.url, true);
+//         if (method == 'POST') {
+//             xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//         }
+//         xhttp.send(request.data);
+//         return true; // prevents the callback from being called too early on return
+//     }
+// });
 

@@ -6,13 +6,10 @@ import numpy as np
 import json
 
 cl = []
-cl_id = {}
-
-# alternate = True
 
 class SocketHandler(websocket.WebSocketHandler):
-    def __init__(self):
-       self.alternate = True
+
+    alternate = True 
 
     def check_origin(self, origin):
         return True
