@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "Gesture Control Slides",
+  "name": "Gesture Presenter",
   "version": "1.0",
 
   "browser_action": {
     "default_icon": "icons/icon19.png",
-    "default_title": "Gesture Control Slides"
-    // "default_popup": "popup.html"
+    "default_title": "Gesture Presenter",
+    "default_popup": "src/page_action/popup.html"
   },
   "default_locale": "en",
   "background": {

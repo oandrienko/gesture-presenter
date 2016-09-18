@@ -1,0 +1,18 @@
+button {
+  display: inline !important;
+}
+body {
+  min-width: 400px;
+  min-height: 100%;
+}
+h1, h3 {
+  font-family: "Times New Roman";
+}
+
+/*div {
+  padding-bottom: 25px;
+}*/
+
+.centre {
+  text-align: center;
+}
