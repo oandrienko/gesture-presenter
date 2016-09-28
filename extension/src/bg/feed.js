@@ -25,6 +25,50 @@ function dataURItoBlob(dataURI) {
 
 }
 
+function main() {
+
+  video = document.createElement('video');
+  document.body.appendChild(video);
+  video.style.display = "inline";
+  video.style.visibility = "hidden";
+  video.style.width = "325px";
+  video.style.height = "200px";
+  video.style.position = "absolute";
+  video.style.top = "0";
+  video.style.left = "0";
+
+  canvas = document.createElement('canvas');
+  document.body.appendChild(canvas);
+  canvas.style.display = "inline";
+  canvas.style.visibility = "hidden";
+  canvas.style.width = "325px";
+  canvas.style.height = "200px";
+  canvas.style.position = "absolute";
+  canvas.style.top = "0";
+  canvas.style.left = "0";
+  canvas.style.zIndex = "1004";
+
+  ctx = canvas.getContext('2d');
+
+
+  if (hasGetUserMedia()) {
+
+   navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 1280, height: 720 }}).then(function(localMediaStream) {
+      video.src = window.URL.createObjectURL(localMediaStream);
+      video.onloadedmetadata = function(e) {
+        video.play();
+      };
+   }).catch(function(err) {
+       console.log(err.name + ": " + err.message);
+   });
+
+  } else {
+   alert('getUserMedia() is not supported in your browser');
+  }
+
+
+
+}
 
 var delayCount = false;
 var isStill = true;
@@ -51,6 +95,8 @@ function initWebSockets() {
         target.onload = function() {
           window.URL.revokeObjectURL(url);
         };
+        // target.src = url;
+
       } else {
         var data = JSON.parse(msg.data);
         // console.log('dir, dX, mv => ', data.dir, data.dX, data.mv);
@@ -100,6 +146,5 @@ var prevSlide = function() {
   dispatchMouseEvent(element, 'mouseup', true, true);
 };
 
+main();
 initWebSockets();
-
-

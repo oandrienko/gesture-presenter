@@ -25,6 +25,8 @@
     "<all_urls>",
     "webRequest",
     "webRequestBlocking",
-    "activeTab"
+    "activeTab",
+    "tabs",
+    "background"
   ]
 }

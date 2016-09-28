@@ -1,3 +1,5 @@
+""" Decodes and encodes the video stream that if first sent from server """
+
 import cv2
 import numpy as np
 

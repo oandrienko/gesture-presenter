@@ -2,11 +2,13 @@
 console.log('Example:', comment, name, img, counter);
 console.log('Creating element with post...');
 
-var element = '<div id="_injected_element' + counter + '" style="z-index: 2147483646; position: absolute; top: 0; right: 0; background: red;"><img src="' + img + '" width="50px" height="50px"/> ' + comment + ' | ' + name + ' </div>';
+var element = '<div class="_injected_element' + counter + '" style="z-index: 2147483646; position: absolute; top: 20px; right: 20px; background: white; height: 90px; width: 350px; font-size: 20px;"><img style="float:left;" src="' + img + '" width="90px" height="90px" /><p style="font-family: Arial, sans-serif; float:left; width: 300px; margin-left: 120px; position: absolute;">' + comment + ' | ' + name + '</p></div>';
 $('body').after(element);
 
 setTimeout(function() {
-	$('#_injected_element'+counter).remove();
-}, 3000*counter);
+	console.log('remove now...');
+	$('._injected_element'+counter).fadeOut(400, function(){ $('._injected_element'+counter).remove(); });
+}, 2000);
 
 console.log('Success, post made!');
+

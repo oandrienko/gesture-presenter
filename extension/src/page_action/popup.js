@@ -1,14 +1,24 @@
-var storeHistory = false;
 var bgPage = chrome.extension.getBackgroundPage();
+
 document.addEventListener('DOMContentLoaded', function() {
-  var checkNotifButton = document.getElementById('checkNotif');
-  var cameraButton = document.getElementById('camera');
-  checkNotifButton.addEventListener('click', function() {
-    console.log('CHECK NOTIFICATIONS CLICKED');
-    bgPage.getNotifications();
-  }, false);
-  cameraButton.addEventListener('click', function() {
-    console.log('CAMERA CLICKED');
-      bgPage.getVideoFeed();
+
+  var notificationButton = document.getElementById('notification');
+  var demoButton = document.getElementById('demo');
+  var presentButton = document.getElementById('present');
+
+  presentButton.addEventListener('click', function() {
+    bgPage.getFeed();
+    presentButton.style.background = "purple";
   });
-}, false);
+
+  notificationButton.addEventListener('click', function() {
+    bgPage.getNotifications();
+    notificationButton.style.background = "purple";
+  });
+
+  demoButton.addEventListener('click', function() {
+    bgPage.getVideoFeed();
+    demoButton.style.background = "purple";
+  });
+
+});

@@ -1,18 +1,24 @@
 button {
   display: inline !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
 }
 body {
   min-width: 400px;
   min-height: 100%;
 }
-h1, h3 {
-  font-family: "Times New Roman";
-}
 
-/*div {
-  padding-bottom: 25px;
-}*/
+.logo-yup {
+	top:15px;
+	position:relative;
+}
 
 .centre {
   text-align: center;
+}
+
+.history-list {
+	list-style: none;
+	text-align:center;
+	line-height:30px;
 }

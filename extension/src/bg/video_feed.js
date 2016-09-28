@@ -30,22 +30,25 @@ function main() {
   video = document.createElement('video');
   document.body.appendChild(video);
   video.style.display = "inline";
+  video.style.visibility = "hidden";
   video.style.width = "325px";
   video.style.height = "200px";
   video.style.position = "absolute";
   video.style.top = "0";
   video.style.left = "0";
-  video.style.zIndex = "1004";
+  video.style.zIndex = "2147483646";
 
   image = document.createElement('img');
   document.body.appendChild(image);
   image.style.display = "inline";
-  image.style.width = "325px";
-  image.style.height = "200px";
+  image.style.width = "385px";
+  image.style.height = "230px";
   image.style.position = "absolute";
-  image.style.top = "200px";
-  image.style.left = "0";
-  image.style.zIndex = "1004";
+  image.style.top = "20px";
+  image.style.left = "20px";
+  image.style.zIndex = "2147483646";
+  image.style.border = "5px white solid";
+  image.style.boxShadow= "10px 20px 30px grey"
 
   canvas = document.createElement('canvas');
   document.body.appendChild(canvas);
@@ -56,7 +59,7 @@ function main() {
   canvas.style.position = "absolute";
   canvas.style.top = "0";
   canvas.style.left = "0";
-  canvas.style.zIndex = "1004";
+  canvas.style.zIndex = "2147483646";
 
   ctx = canvas.getContext('2d');
 
@@ -82,8 +85,7 @@ function main() {
 }
 
 var delayCount = false;
-var isStill = true;
-var limit = 100;
+var limit = 150;
 function initWebSockets() {
   var ws = new WebSocket("ws://localhost:8888/ws/image_stream");
   ws.onopen = function (msg) {
@@ -110,20 +112,18 @@ function initWebSockets() {
 
       } else {
         var data = JSON.parse(msg.data);
-        // console.log('dir, dX, mv => ', data.dir, data.dX, data.mv);
+        console.log('dir, dX, mv => ', data.dir, data.dX);
 
-        if(!delayCount && !isStill) {
-
+        if(!delayCount) {
           if (data.dX > limit) {
             nextSlide();
             delayCount = true;
-            setTimeout(function(){ delayCount = false; }, 10000);
+            setTimeout(function(){ delayCount = false; }, 5000);
           } else if (data.dX < -limit) {
             prevSlide();
             delayCount = true;
-            setTimeout(function(){ delayCount = false; }, 10000);
+            setTimeout(function(){ delayCount = false; }, 5000);
           }
-
         }
 
 
@@ -132,6 +132,7 @@ function initWebSockets() {
 }
 
 var nextSlide = function() {
+  console.log('NEXT SLIDE');
   var element = document.getElementsByClassName("goog-inline-block")[8];
   var dispatchMouseEvent = function(target, var_args) {
     var e = document.createEvent("MouseEvents");
@@ -145,6 +146,7 @@ var nextSlide = function() {
 };
 
 var prevSlide = function() {
+  console.log('PREV SLIDE');
   var element = document.getElementsByClassName("goog-inline-block")[2];
   var dispatchMouseEvent = function(target, var_args) {
     var e = document.createEvent("MouseEvents");
@@ -159,19 +161,3 @@ var prevSlide = function() {
 
 main();
 initWebSockets();
-
-
-// setTimeout(function() {
-//   chrome.runtime.sendMessage({
-//       method: 'GET',
-//       action: 'xhttp',
-//       url: 'http://localhost:8888/api/check_gesture',
-//       data: 'id=7&value=7'
-//   }, function(responseText) {
-//       alert(responseText);
-//       console.log('Response received:')
-//       console.log(responseText);
-//       return false;
-//   });
-// }, 2000);
-

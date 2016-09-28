@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>GTmetrix Analyzer</title>
+    <title>Gesture Presenter</title>
     <script src="popup.js"></script>
     <script src="history.js"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,16 +9,19 @@
   </head>
   <body>
     <div id="" class="centre">
-      <img src="./logo.png" width="70px" height="70px" class="centre"/>
+      <img src="./logo.png" width="70px" height="70px" class="centre logo-yup"/>
       <h1 class="centre">Gesture Presenter</h1>
-      <input type="button" class="btn btn-primary" id="checkNotif" value="Enable Notifications"></input>
-      <input type="button" class="btn btn-primary" id="camera" value="Camera"></input>
-      <input type="button" class="btn btn-primary" id="history" value="No Camera"></input>
+      <input type="button" class="btn btn-primary" id="present" value="Present"></input>
+      <input type="button" class="btn btn-primary" id="notification" value="Notifications"></input>
+      <input type="button" class="btn btn-primary" id="demo" value="Demo Present"></input>
       <hr>
     </div>
     <div class="centre">
       <h3>History of Presentations</h3>
-      <ul id="historylist">
+      <ul class="history-list">
+        <li style=""><a href="https://docs.google.com/presentation/d/1DUUebH2jmhQtAmZe8FI1wIykRxYd-1DG-Hif8JPCq3g/pub">Hack the North 2016</a></li>
+        <li style=""><a href="https://docs.google.com/presentation/d/1DUUebH2jmhQtAmZe8FI1wIykRxYd-1DG-Hif8JPCq3g/pub">Using Windows Runtime With C++</a></li>
+        <li><a href="https://docs.google.com/presentation/d/1HlU_WQugRYI2kHvNhwcaFwp585cyXmS6qj3M1MMifDI/pub">Untitled Presentation</a></li>
       </ul>
     </div>
   </body>

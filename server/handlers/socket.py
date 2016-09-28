@@ -2,12 +2,10 @@ from tornado import websocket
 import cv2
 from collections import deque
 import numpy as np
-
 import json
 
 from utils.obj_track import obj_track
-
-from utils.motion_detect import motion_detect
+# from utils.motion_detect import motion_detect
 
 
 cl = []
