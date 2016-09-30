@@ -1,0 +1,67 @@
+/**
+* For the injected notifications....
+*/
+
+.__gesture_present__injected-post {
+	z-index: 2147483646;
+	position: absolute; 
+	top: 20px; 
+	right: 20px; 
+	background: white; 
+	height: 90px; 
+	width: 350px; 
+	font-size: 20px;
+}
+
+.__gesture_present__injected-image {
+	float:left;
+	width: 90px;
+	height: 90px;
+}
+
+.__gesture_present__injected-post {
+	font-family: Arial, sans-serif; 
+	position: absolute;
+	float:left; 
+	width: 300px; 
+	margin-left: 120px; 
+}
+
+/**
+* For the injected video stream
+*/
+
+.__gesture_present__vf-video {
+	display: inline;
+	visibility: hidden;
+	width: 325px;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2147483646;
+}
+
+.__gesture_present__vf-image {
+	display: inline;
+	width: 385px;
+	height: 230px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 2147483646;
+	border: 5px white solid;
+	box-shadow:10px 20px 30px grey;
+}
+
+.__gesture_present__vf-canvas {
+	display: inline;
+	visibility: hidden;
+	width: 325px;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2147483646;
+}
+

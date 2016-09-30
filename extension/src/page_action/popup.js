@@ -1,24 +1,30 @@
-var bgPage = chrome.extension.getBackgroundPage();
+
+var bg = chrome.extension.getBackgroundPage();
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  var notificationButton = document.getElementById('notification');
-  var demoButton = document.getElementById('demo');
-  var presentButton = document.getElementById('present');
+	var 
+	// presentButton = document.getElementById('present'),
+	notificationButton = document.getElementById('notification'),
+	demoButton = document.getElementById('demo');
 
-  presentButton.addEventListener('click', function() {
-    bgPage.getFeed();
-    presentButton.style.background = "purple";
-  });
+	function turnPurple(el) {
+	  el.style.background = "purple";
+	}
 
-  notificationButton.addEventListener('click', function() {
-    bgPage.getNotifications();
-    notificationButton.style.background = "purple";
-  });
+	// presentButton.addEventListener('click', function() {
+	//   bg.gesturePresenter.start_demo();
+	//   turnPurple(presentButton);
+	// });
 
-  demoButton.addEventListener('click', function() {
-    bgPage.getVideoFeed();
-    demoButton.style.background = "purple";
-  });
+	notificationButton.addEventListener('click', function() {
+	  bg.liveNotifications.start();
+	  turnPurple(notificationButton);
+	});
+
+	demoButton.addEventListener('click', function() {
+	  bg.gesturePresenter.start_demo();
+	  turnPurple(demoButton);
+	});
 
 });

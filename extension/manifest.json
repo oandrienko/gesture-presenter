@@ -9,15 +9,15 @@
     "default_title": "Gesture Presenter",
     "default_popup": "src/page_action/popup.html"
   },
-  "default_locale": "en",
   "background": {
-    "scripts": ["js/jquery/jquery.js", "src/bg/background.js"]
+    "scripts": ["lib/jquery.min.js", "src/bg/background.js"]
   },
 
   "content_scripts": [
     {
-      "matches": ["*://*.google.com/*"],
-      "js": ["js/jquery/jquery.js"]
+      "matches": ["*://docs.google.com/*"],
+      "js": ["lib/jquery.min.js"],
+      "css": ["src/inject/inject.css"]
     }
   ],
 

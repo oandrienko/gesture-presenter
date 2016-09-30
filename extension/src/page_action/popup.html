@@ -1,28 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Gesture Presenter</title>
-    <script src="popup.js"></script>
-    <script src="history.js"></script>
+
+    <title>Gesture Presenter - Hack the North 2016</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./popup.css">
+    <style>
+      body {
+        min-width: 400px;
+        min-height: 100%;
+      }
+
+      .main-logo {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        top:15px;
+      }
+
+      .centre {
+        text-align: center;
+      }
+
+      button {
+        display: inline !important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: lighter;
+      }
+
+      .history-list {
+        list-style: none;
+        text-align:center;
+        line-height:30px;
+      }
+    </style>
   </head>
   <body>
-    <div id="" class="centre">
-      <img src="./logo.png" width="70px" height="70px" class="centre logo-yup"/>
+
+    <div class="centre">
+      <img class="centre main-logo" src="logo.png" />
       <h1 class="centre">Gesture Presenter</h1>
-      <input type="button" class="btn btn-primary" id="present" value="Present"></input>
+
+      <!-- Actions for extension -->
+      <input type="button" class="btn btn-primary" id="present" value="Present" disabled="true"></input>
       <input type="button" class="btn btn-primary" id="notification" value="Notifications"></input>
       <input type="button" class="btn btn-primary" id="demo" value="Demo Present"></input>
+
       <hr>
     </div>
+
     <div class="centre">
+      <!-- Demo of history functionality -->
       <h3>History of Presentations</h3>
       <ul class="history-list">
-        <li style=""><a href="https://docs.google.com/presentation/d/1DUUebH2jmhQtAmZe8FI1wIykRxYd-1DG-Hif8JPCq3g/pub">Hack the North 2016</a></li>
-        <li style=""><a href="https://docs.google.com/presentation/d/1DUUebH2jmhQtAmZe8FI1wIykRxYd-1DG-Hif8JPCq3g/pub">Using Windows Runtime With C++</a></li>
-        <li><a href="https://docs.google.com/presentation/d/1HlU_WQugRYI2kHvNhwcaFwp585cyXmS6qj3M1MMifDI/pub">Untitled Presentation</a></li>
+        <li>
+          <a href="https://docs.google.com/presentation/d/1DUUebH2jmhQtAmZe8FI1wIykRxYd-1DG-Hif8JPCq3g/pub">
+            Hack the North 2016
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.google.com/presentation/d/1DUUebH2jmhQtAmZe8FI1wIykRxYd-1DG-Hif8JPCq3g/pub">
+            Using Windows Runtime With C++
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.google.com/presentation/d/1HlU_WQugRYI2kHvNhwcaFwp585cyXmS6qj3M1MMifDI/pub">
+            Untitled Presentation
+          </a>
+        </li>
       </ul>
     </div>
+
+    <script src="popup.js"></script>
+
   </body>
 </html>
