@@ -15,7 +15,7 @@ var gesturePresenter = {
 	// Has video support for showing openCv additio s
 	start_demo: function() {
 		chrome.tabs.executeScript( null, {
-			file: "src/bg/prez_video.js"
+			file: "src/bg/presentation.js"
 		});
 	}
 };
